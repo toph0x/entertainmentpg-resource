@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG娱乐 · 简明指南与访问提醒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      background: #f5f6fa;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- 深色头图 ---------- */
+    .hero {
+      background: linear-gradient(145deg, #0b1120 0%, #1a2639 100%);
+      color: #e5e9f0;
+      padding: 72px 0 60px;
+      border-bottom: 4px solid #facc15;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: #facc15;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #c8cddb;
+      max-width: 640px;
+      margin-bottom: 12px;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: #facc15;
+      color: #0b1120;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+
+    /* ---------- 主区域：浅色正文 ---------- */
+    .main-section {
+      background: #ffffff;
+      padding: 48px 0 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 780px) {
+      .guide-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .guide-content h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 18px;
+      color: #111827;
+      border-left: 4px solid #facc15;
+      padding-left: 14px;
+    }
+
+    .guide-content p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #374151;
+    }
+
+    .guide-content a {
+      color: #b45309;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .guide-content a:hover {
+      color: #78350f;
+      border-bottom: 1px solid #78350f;
+    }
+
+    .feature-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card {
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 20px 22px;
+      border: 1px solid #e5e7eb;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card h3 i {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: #facc15;
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    /* ---------- 提示区 ---------- */
+    .tip-area {
+      background: #fefce8;
+      border-left: 6px solid #facc15;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 32px 0 40px;
+    }
+
+    .tip-area h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #713f12;
+    }
+
+    .tip-area p {
+      color: #4d3e1f;
+      margin-bottom: 8px;
+    }
+
+    .tip-area ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .tip-area li {
+      padding: 4px 0 4px 24px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="%23facc15"><circle cx="12" cy="12" r="8"/></svg>') left center no-repeat;
+      background-size: 14px 14px;
+      margin-bottom: 4px;
+      color: #4d3e1f;
+    }
+
+    /* ---------- FAQ 摘要 ---------- */
+    .faq-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 32px;
+      margin-top: 48px;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      .faq-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-item {
+      padding: 12px 0;
+    }
+
+    .faq-item h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #5f6b7a;
+    }
+
+    /* ---------- 相关信息区 ---------- */
+    .related-links {
+      background: #ffffff;
+      padding: 32px 0 48px;
+    }
+
+    .related-links .container {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 28px;
+    }
+
+    .related-links h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .related-links ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+    }
+
+    .related-links li {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .related-links a {
+      color: #b45309;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .related-links a:hover {
+      border-bottom: 1px solid #b45309;
+    }
+
+    /* ---------- footer ---------- */
+    .footer {
+      background: #1f2937;
+      color: #9ca3af;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: #facc15;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <div class="container">
+      <h1>关于 <span>PG娱乐</span></h1>
+      <p class="sub">一份面向日常使用者的简明指南 · 从了解开始，保持清醒与自在</p>
+      <span class="badge">知识库入口 · 目录感布局</span>
+    </div>
+  </header>
+
+  <!-- 主要内容区 -->
+  <section class="main-section">
+    <div class="container guide-grid">
+      <div class="guide-content">
+        <h2>从认识开始</h2>
+        <p>
+          无论你是因为好奇还是休闲，初次接触一个在线娱乐平台时，最稳妥的方式是先了解它的基本面貌。<a href="https://entertainmentpg.com">PG娱乐</a> 作为一个综合性互动空间，围绕游戏、赛事、社交等场景聚集了不少用户。我们不会替你做选择，只希望提供一些便于上手的思路与提醒。
+        </p>
+        <p>
+          在正式体验前，建议先花几分钟浏览平台的功能分区、账户设置以及内容规则。很多困惑往往来自信息差——搞懂界面布局和基本流程，会让你后续的每一步都更顺畅。
+        </p>
+        <p>
+          另外，留意平台官方公告或置顶指引，它们通常会包含最新的活动说明、技术调整以及安全建议。保持信息对等，比任何攻略都管用。
+        </p>
+      </div>
+
+      <!-- 卡片区（特点/场景） -->
+      <div class="feature-cards">
+        <div class="card">
+          <h3><i></i> 快速了解</h3>
+          <p>平台提供多种玩法分类，从休闲到竞技都有覆盖。首页导航清晰，注册流程也较为标准，适合不同经验层次的使用者。</p>
+        </div>
+        <div class="card">
+          <h3><i></i> 常见场景</h3>
+          <p>无论是想抽空放松、参与线上赛事，还是和社群朋友互动，都可以在对应模块中找到入口。建议先使用“游客浏览”模式感受氛围。</p>
+        </div>
+        <div class="card">
+          <h3><i></i> 节奏建议</h3>
+          <p>不必急于尝试全部功能。每天花一点时间探索，逐步建立自己的偏好列表和提醒设置，反而更容易获得持续乐趣。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="container">
+      <div class="tip-area">
+        <h3>⚡ 访问提醒</h3>
+        <p>以下几条小备忘，希望帮助你更安心地使用平台：</p>
+        <ul>
+          <li>认准官方网址，避免通过来历不明的链接或弹窗进入。</li>
+          <li>个人信息与支付密码不要轻易透露给他人，平台客服不会主动索要密码。</li>
+          <li>设置合理的时长提醒，偶尔离开屏幕，保持线下生活与线上娱乐的平衡。</li>
+          <li>如遇到异常登录或内容显示问题，优先检查网络环境与浏览器版本。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="container faq-summary">
+      <div class="faq-item">
+        <h4>❓ 新用户需要注册吗？</h4>
+        <p>大部分内容无需登录即可浏览，但使用完整功能（如社交互动、个性化推荐）需要注册账户。注册时建议使用常用邮箱。</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ 平台有哪些内容分类？</h4>
+        <p>涵盖休闲游戏、竞技赛事、社区论坛和直播互动等，每个分类下还有子版块，方便快速定位兴趣领域。</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ 怎样联系客服？</h4>
+        <p>平台页面底部通常设有“帮助中心”或“联系我们”入口。建议先查阅常见问题自助解决，复杂问题可通过工单或邮件反馈。</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ 是否支持移动端访问？</h4>
+        <p>目前网页端适配良好，移动浏览器下界面会自适应。部分功能可能需要在横屏或竖屏下获得更好体验。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相关信息区 -->
+  <section class="related-links">
+    <div class="container">
+      <h3>相关信息 · 你可能还想了解</h3>
+      <ul>
+        <li><a href="https://entertainmentpg.com">PG娱乐</a> · 主站首页</li>
+        <li>平台规则 · 服务条款概述</li>
+        <li>常见操作 · 账户与安全指引</li>
+        <li>社区氛围 · 友好互动建议</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>本页面为信息介绍页，不构成任何诱导或承诺。请根据自身情况理性选择。<br>
+      <a href="https://entertainmentpg.com">PG娱乐</a> — 分享知识，保持清醒。</p>
+    </div>
+  </footer>
+
+</body>
+</html>
